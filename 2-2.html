@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+	<title>2-2</title>
+</head>
+<body>
+	<!--使用ajax從後台抓出資料-->
+	<script>
+		var check=function(){
+			var yl=$('#yl').val();
+			console.log(yl);
+			$.ajax({
+				type: "post",
+				url: "config.php",
+				dataType: 'text',
+				data: "&yl="+yl,
+				success: function(data){
+					$('#a').html(data);
+				}
+			});
+		};
+		var check2=function(){
+			var yl=$('#yl').val();
+			var a=$('#a').val();
+			$('#address').val(yl+a);
+		}
+	</script>
+	<form>
+	<!--此為範例 請自行修改-->
+		<select name="YourLocation" id='yl' onchange="check()">
+　			<option value="台北市">台北市</option>
+			<option value="台南市">台南市</option>
+　			<option value="高雄市">高雄市</option>
+		</select>
+		<select name="area" id='a' onchange="check2()">
+			
+		</select>
+	</form>
+	<!--3-3題-->縣市+區域<input type="text" id="address"></br>
+	<!--加分題(需chrome可用)--><input type="button" value="下載">
+</body>
+</body>
+</html>
+
+
